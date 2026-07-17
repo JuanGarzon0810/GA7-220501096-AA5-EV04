@@ -1,0 +1,135 @@
+========================================================================
+ ENDPOINTS DE LA API — Proyecto BARBIERE 11 (Sistema Completo)
+ Evidencia GA7-220501096-AA5-EV04
+ Aprendiz: Juan Esteban Garzón Riaño | Ficha: 3186590
+========================================================================
+
+URL BASE (entorno local):
+  http://localhost:3000/api
+
+Autenticación: todas las rutas, EXCEPTO el login, requieren el header:
+  Authorization: Bearer <token>
+(el token se obtiene en POST /api/auth/login)
+
+========================================================================
+ 1) SERVICIO DE AUTENTICACIÓN — /api/auth
+========================================================================
+ POST   /api/auth/login              Iniciar sesión                 (sin auth)
+ GET    /api/auth/perfil             Obtener perfil del usuario
+ POST   /api/auth/logout             Cerrar sesión
+
+Body login: { "correo": "admin@barbiere11.com", "password": "admin123" }
+Respuesta exitosa: { "ok": true, "mensaje": "Acceso concedido.",
+                      "data": { "token": "...", "usuario": {...} } }
+
+========================================================================
+ 2) SERVICIO DE CLIENTES — /api/clientes
+========================================================================
+ GET    /api/clientes                Listar clientes (admite ?buscar=texto)
+ GET    /api/clientes/:id            Obtener cliente por id
+ POST   /api/clientes                Registrar cliente
+ PUT    /api/clientes/:id            Editar cliente
+ DELETE /api/clientes/:id            Eliminar cliente
+
+Body: { "nombre": "Carlos Ramirez", "telefono": "3001234567", "correo": "carlos@mail.com" }
+
+========================================================================
+ 3) SERVICIO DE SERVICIOS DE BARBERÍA — /api/servicios
+========================================================================
+ GET    /api/servicios               Listar servicios
+ GET    /api/servicios/:id           Obtener servicio por id
+ POST   /api/servicios               Registrar servicio
+ PUT    /api/servicios/:id           Editar servicio
+ DELETE /api/servicios/:id           Eliminar servicio
+
+Body: { "nombre": "Peluqueada", "precio": 25000, "duracion": 30, "descripcion": "Corte clásico" }
+
+========================================================================
+ 4) SERVICIO DE BARBEROS — /api/barberos
+========================================================================
+ GET    /api/barberos                Listar barberos
+ GET    /api/barberos/:id            Obtener barbero por id
+ GET    /api/barberos/:id/citas      Citas asignadas a un barbero
+ POST   /api/barberos                Registrar barbero
+ PUT    /api/barberos/:id            Editar barbero
+ DELETE /api/barberos/:id            Eliminar barbero
+
+Body: { "nombre": "Miguel Ospina", "especialidad": "Cortes clásicos", "telefono": "3015558822" }
+
+========================================================================
+ 5) SERVICIO DE CITAS — /api/citas
+========================================================================
+ GET    /api/citas                   Listar citas (admite ?fecha=YYYY-MM-DD)
+ GET    /api/citas/:id               Obtener cita por id
+ POST   /api/citas                   Registrar cita
+ PUT    /api/citas/:id               Editar cita
+ PATCH  /api/citas/:id/estado        Cambiar estado / cancelar cita
+ DELETE /api/citas/:id               Eliminar cita
+
+Body: { "clienteId": 1, "servicioId": 2, "barberoId": 1, "fecha": "2026-07-15", "hora": "10:00" }
+Body (cambiar estado): { "estado": "cancelada" }
+Estados válidos: pendiente | en_proceso | finalizada | cancelada
+
+Regla de negocio: el sistema responde 409 Conflict si el barbero ya
+tiene una cita registrada en la misma fecha y hora.
+
+========================================================================
+ 6) SERVICIO DE INVENTARIO — /api/productos
+========================================================================
+ GET    /api/productos               Listar productos
+ GET    /api/productos/:id           Obtener producto por id
+ POST   /api/productos               Registrar producto
+ PUT    /api/productos/:id           Editar producto
+ PATCH  /api/productos/:id/stock     Actualizar stock (sumar o restar)
+ DELETE /api/productos/:id           Eliminar producto
+
+Body: { "nombre": "Cera para cabello", "stock": 15, "precio": 22000 }
+Body (stock): { "cantidad": -3 }   (negativo resta, positivo suma)
+
+========================================================================
+ 7) SERVICIO DE PAGOS — /api/pagos
+========================================================================
+ GET    /api/pagos/ingresos/hoy      Ingresos del día (admite ?fecha=)
+ GET    /api/pagos                   Listar pagos
+ GET    /api/pagos/:id               Obtener pago por id
+ POST   /api/pagos                   Registrar pago
+ DELETE /api/pagos/:id               Eliminar pago
+
+Body: { "citaId": 1, "total": 25000, "metodoPago": "efectivo", "fecha": "2026-07-15" }
+Métodos válidos: efectivo | transferencia | tarjeta
+Efecto: al registrar el pago, la cita asociada pasa a estado "finalizada".
+
+========================================================================
+ 8) SERVICIO DE REPORTES — /api/reportes
+========================================================================
+ GET    /api/reportes/resumen-dashboard        Indicadores generales
+ GET    /api/reportes/servicios-mas-vendidos   Servicios más vendidos
+ GET    /api/reportes/ingresos-por-mes         Ingresos agrupados por mes
+ GET    /api/reportes/citas-por-estado         Citas agrupadas por estado
+
+========================================================================
+ RESUMEN GENERAL
+========================================================================
+ Servicio        | Prefijo          | Endpoints | Auth requerida
+ -----------------|------------------|-----------|----------------
+ Autenticación    | /api/auth        |     3     | Parcial (login no)
+ Clientes         | /api/clientes    |     5     | Sí
+ Servicios        | /api/servicios   |     5     | Sí
+ Barberos         | /api/barberos    |     6     | Sí
+ Citas            | /api/citas       |     6     | Sí
+ Inventario       | /api/productos   |     6     | Sí
+ Pagos            | /api/pagos       |     5     | Sí
+ Reportes         | /api/reportes    |     4     | Sí
+ -----------------|------------------|-----------|----------------
+ TOTAL            |                  |    40     |
+
+========================================================================
+ ARCHIVOS RELACIONADOS EN ESTE PROYECTO
+========================================================================
+ - docs/API.md                             -> documentación técnica completa
+ - docs/coleccion_postman_completa.json    -> colección de Postman con
+                                               47 peticiones y pruebas
+                                               automatizadas (pm.test),
+                                               usada en esta evidencia
+ - backend/routes/                         -> definición de rutas en código
+ - backend/controllers/                    -> lógica de cada servicio

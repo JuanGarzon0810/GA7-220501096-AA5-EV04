@@ -1,0 +1,7 @@
+EVIDENCIA GA7-220501096-AA5-EV04
+Proyecto: BARBIERE 11 - Testing completo de las API del proyecto con Postman
+Aprendiz: Juan Esteban Garzón Riaño
+Ficha: 3186590
+
+ENLACE DEL REPOSITORIO EN GITHUB:
+https://github.com/JuanGarzon0810/GA7-220501096-AA5-EV04
