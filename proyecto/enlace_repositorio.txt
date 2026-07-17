@@ -1,54 +1,8 @@
-EVIDENCIA GA7-220501096-AA5-EV03
-Proyecto: BARBIERE 11 - Diseno y desarrollo de todos los servicios web del proyecto
-Aprendiz: Juan Esteban Garzon Riano
+EVIDENCIA GA7-220501096-AA5-EV04
+Proyecto: BARBIERE 11 - Testing completo de las API del proyecto con Postman
+Aprendiz: Juan Esteban Garzón Riaño
 Ficha: 3186590
 
 ENLACE DEL REPOSITORIO EN GITHUB:
-[ Pega aqui la URL de tu repositorio una vez lo subas, ejemplo: ]
-https://github.com/JuanGarzon0810/GA7-220501096-AA5-EV03
+https://github.com/JuanGarzon0810/GA7-220501096-AA5-EV04
 
-------------------------------------------------------------
-HISTORIAL DE COMMITS AL MOMENTO DE ESTA EVIDENCIA:
-------------------------------------------------------------
-64385ec  Diseno y desarrollo de todos los servicios web del proyecto
-         BARBIERE 11 (GA7-220501096-AA5-EV03): autenticacion, clientes,
-         servicios, barberos, citas, inventario, pagos y reportes, con
-         documentacion completa y coleccion de pruebas Postman
-4e06930  Sistema completo BARBIERE 11: autenticacion, clientes,
-         servicios, barberos, citas, inventario, pagos y reportes
-
-El repositorio local (carpeta "proyecto" o raiz de esta entrega) ya
-incluye ambos commits.
-
-------------------------------------------------------------
-PASOS PARA SUBIR ESTE PROYECTO A GITHUB:
-------------------------------------------------------------
-1. Crear un repositorio vacio en GitHub, por ejemplo llamado
-   "GA7-220501096-AA5-EV03".
-
-2. Abrir una terminal dentro de la carpeta del proyecto y ejecutar:
-
-   git remote add origin https://github.com/TU-USUARIO/GA7-220501096-AA5-EV03.git
-   git push -u origin main
-
-   Si el repositorio ya tiene contenido creado desde GitHub (README,
-   licencia, etc.), usa en su lugar:
-
-   git push -u origin main --force
-
-3. Copia la URL del repositorio y reemplaza la linea de arriba en este archivo.
-4. Vuelve a comprimir la carpeta con el nombre:
-   JUAN_ESTEBAN_GARZON_RIANO_AA5_EV03.zip
-
-------------------------------------------------------------
-RESUMEN DE LO ENTREGADO EN ESTA EVIDENCIA:
-------------------------------------------------------------
-- 8 servicios web (API REST) completos: autenticacion, clientes,
-  servicios, barberos, citas, inventario, pagos y reportes.
-- 40 endpoints en total, documentados uno por uno en docs/API.md.
-- Coleccion de Postman con 47 peticiones y pruebas automatizadas
-  (docs/coleccion_postman_completa.json), verificada con 47/47
-  aserciones exitosas contra el backend real.
-- Frontend funcional que consume todos los servicios (incluido como
-  referencia de uso, no como entregable principal de esta evidencia).
-- Proyecto versionado con Git (2 commits).
