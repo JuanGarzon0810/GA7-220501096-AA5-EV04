@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BARBIERE 11 - Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="layout">
+        <aside id="sidebar"></aside>
+
+        <main class="contenido-principal">
+            <header id="topbar"></header>
+
+            <div class="pagina-contenido">
+
+                <!-- Tarjetas de indicadores -->
+                <div class="grid-tarjetas">
+                    <div class="tarjeta-indicador">
+                        <div class="icono-indicador">👥</div>
+                        <div>
+                            <p class="valor-indicador" id="valorTotalClientes">0</p>
+                            <p class="etiqueta-indicador">Total Clientes registrados</p>
+                        </div>
+                    </div>
+                    <div class="tarjeta-indicador">
+                        <div class="icono-indicador">📅</div>
+                        <div>
+                            <p class="valor-indicador" id="valorTotalCitas">0</p>
+                            <p class="etiqueta-indicador">Total Citas este mes</p>
+                        </div>
+                    </div>
+                    <div class="tarjeta-indicador">
+                        <div class="icono-indicador">💰</div>
+                        <div>
+                            <p class="valor-indicador" id="valorTotalIngresos">$0</p>
+                            <p class="etiqueta-indicador">Total Ingresos acumulados</p>
+                        </div>
+                    </div>
+                    <div class="tarjeta-indicador">
+                        <div class="icono-indicador">⚡</div>
+                        <div>
+                            <p class="valor-indicador" id="valorCitasHoy">0</p>
+                            <p class="etiqueta-indicador">Citas Hoy programadas</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paneles de graficas -->
+                <div class="grid-paneles">
+                    <div class="panel">
+                        <h3>Próximas Citas</h3>
+                        <div id="listaProximasCitas">
+                            <p class="sin-datos">Cargando citas...</p>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <h3>Citas por Estado</h3>
+                        <div id="graficaCitasPorEstado">
+                            <p class="sin-datos">Cargando...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <h3>Servicios Populares</h3>
+                    <div id="graficaServiciosPopulares">
+                        <p class="sin-datos">Cargando...</p>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script>const PAGINA_ACTIVA = 'dashboard';</script>
+    <script src="js/sidebar.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BARBIERE 11 - Gestión de Citas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="layout">
+        <aside id="sidebar"></aside>
+
+        <main class="contenido-principal">
+            <header id="topbar"></header>
+
+            <div class="pagina-contenido">
+                <div class="encabezado">
+                    <div>
+                        <h2>Gestión de Citas</h2>
+                        <p class="descripcion-topbar">Agenda y administra las citas</p>
+                    </div>
+                    <button class="btn btn-dorado" id="btnNuevaCita">+ Nueva Cita</button>
+                </div>
+
+                <!-- Pestanas de filtro por estado -->
+                <div class="pestanas" id="pestanasEstado">
+                    <button class="pestana activa" data-estado="todas">Todas</button>
+                    <button class="pestana" data-estado="pendiente">Pendiente</button>
+                    <button class="pestana" data-estado="en_proceso">En Proceso</button>
+                    <button class="pestana" data-estado="finalizada">Finalizada</button>
+                    <button class="pestana" data-estado="cancelada">Cancelada</button>
+                </div>
+
+                <table class="tabla-clientes">
+                    <thead>
+                        <tr>
+                            <th>Cliente</th>
+                            <th>Servicio</th>
+                            <th>Fecha</th>
+                            <th>Hora</th>
+                            <th>Barbero</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cuerpoTablaCitas">
+                        <tr><td colspan="7" class="sin-datos">Cargando citas...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal para crear / editar cita (RF11, RF12, RF13) -->
+    <div class="overlay-modal" id="overlayModal">
+        <div class="modal">
+            <h2 id="tituloModal">Nueva Cita</h2>
+
+            <form id="formCita">
+                <input type="hidden" id="citaId">
+
+                <div class="campo">
+                    <label for="selectCliente">Cliente</label>
+                    <select id="selectCliente" class="select-formulario" required></select>
+                </div>
+
+                <div class="campo">
+                    <label for="selectServicio">Servicio</label>
+                    <select id="selectServicio" class="select-formulario" required></select>
+                </div>
+
+                <div class="campo">
+                    <label for="selectBarbero">Barbero</label>
+                    <select id="selectBarbero" class="select-formulario" required></select>
+                </div>
+
+                <div class="campo">
+                    <label for="inputFecha">Fecha</label>
+                    <input type="date" id="inputFecha" required>
+                </div>
+
+                <div class="campo">
+                    <label for="inputHora">Hora</label>
+                    <input type="time" id="inputHora" required>
+                </div>
+
+                <p class="mensaje-error" id="mensajeErrorForm"></p>
+
+                <div class="acciones-modal">
+                    <button type="button" class="btn btn-secundario" id="btnCancelar">Cancelar</button>
+                    <button type="submit" class="btn btn-dorado">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="notificacion" id="notificacion"></div>
+
+    <script src="js/auth.js"></script>
+    <script>const PAGINA_ACTIVA = 'citas';</script>
+    <script src="js/sidebar.js"></script>
+    <script src="js/citas.js"></script>
+</body>
+</html>

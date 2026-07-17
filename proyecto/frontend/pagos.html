@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BARBIERE 11 - Gestión de Pagos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="layout">
+        <aside id="sidebar"></aside>
+
+        <main class="contenido-principal">
+            <header id="topbar"></header>
+
+            <div class="pagina-contenido">
+                <div class="encabezado">
+                    <div>
+                        <h2>Gestión de Pagos</h2>
+                        <p class="descripcion-topbar">Registro e historial de transacciones</p>
+                    </div>
+                    <button class="btn btn-dorado" id="btnRegistrarPago">+ Registrar Pago</button>
+                </div>
+
+                <!-- Tarjetas resumen -->
+                <div class="grid-tarjetas">
+                    <div class="tarjeta-indicador">
+                        <div class="icono-indicador">💰</div>
+                        <div>
+                            <p class="valor-indicador" id="valorTotalGeneral">$0</p>
+                            <p class="etiqueta-indicador">Total General</p>
+                        </div>
+                    </div>
+                    <div class="tarjeta-indicador">
+                        <div class="icono-indicador">💵</div>
+                        <div>
+                            <p class="valor-indicador" id="valorEfectivo">$0</p>
+                            <p class="etiqueta-indicador">Efectivo</p>
+                        </div>
+                    </div>
+                    <div class="tarjeta-indicador">
+                        <div class="icono-indicador">🏦</div>
+                        <div>
+                            <p class="valor-indicador" id="valorTransferencia">$0</p>
+                            <p class="etiqueta-indicador">Transferencia</p>
+                        </div>
+                    </div>
+                    <div class="tarjeta-indicador">
+                        <div class="icono-indicador">💳</div>
+                        <div>
+                            <p class="valor-indicador" id="valorTarjeta">$0</p>
+                            <p class="etiqueta-indicador">Tarjeta</p>
+                        </div>
+                    </div>
+                </div>
+
+                <table class="tabla-clientes">
+                    <thead>
+                        <tr>
+                            <th>Cliente</th>
+                            <th>Servicio</th>
+                            <th>Monto</th>
+                            <th>Método</th>
+                            <th>Fecha</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cuerpoTablaPagos">
+                        <tr><td colspan="6" class="sin-datos">Cargando pagos...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal para registrar pago (RF20) -->
+    <div class="overlay-modal" id="overlayModal">
+        <div class="modal">
+            <h2>Registrar Pago</h2>
+
+            <form id="formPago">
+                <div class="campo">
+                    <label for="selectCita">Cita a pagar</label>
+                    <select id="selectCita" class="select-formulario" required></select>
+                </div>
+
+                <div class="campo">
+                    <label for="inputTotal">Monto (COP)</label>
+                    <input type="number" id="inputTotal" min="0" step="500" required>
+                </div>
+
+                <div class="campo">
+                    <label for="selectMetodo">Método de pago</label>
+                    <select id="selectMetodo" class="select-formulario" required>
+                        <option value="">Selecciona una opción</option>
+                        <option value="efectivo">Efectivo</option>
+                        <option value="transferencia">Transferencia</option>
+                        <option value="tarjeta">Tarjeta</option>
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <label for="inputFecha">Fecha</label>
+                    <input type="date" id="inputFecha" required>
+                </div>
+
+                <p class="mensaje-error" id="mensajeErrorForm"></p>
+
+                <div class="acciones-modal">
+                    <button type="button" class="btn btn-secundario" id="btnCancelar">Cancelar</button>
+                    <button type="submit" class="btn btn-dorado">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="notificacion" id="notificacion"></div>
+
+    <script src="js/auth.js"></script>
+    <script>const PAGINA_ACTIVA = 'pagos';</script>
+    <script src="js/sidebar.js"></script>
+    <script src="js/pagos.js"></script>
+</body>
+</html>

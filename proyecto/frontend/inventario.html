@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BARBIERE 11 - Control de Inventario</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="layout">
+        <aside id="sidebar"></aside>
+
+        <main class="contenido-principal">
+            <header id="topbar"></header>
+
+            <div class="pagina-contenido">
+                <div class="encabezado">
+                    <div>
+                        <h2>Control de Inventario</h2>
+                        <p class="descripcion-topbar">Gestiona tus productos y stock</p>
+                    </div>
+                    <button class="btn btn-dorado" id="btnNuevoProducto">+ Nuevo Producto</button>
+                </div>
+
+                <table class="tabla-clientes">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Precio</th>
+                            <th>Estado Stock</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cuerpoTablaProductos">
+                        <tr><td colspan="6" class="sin-datos">Cargando inventario...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal para crear / editar producto (RF18) -->
+    <div class="overlay-modal" id="overlayModal">
+        <div class="modal">
+            <h2 id="tituloModal">Nuevo Producto</h2>
+
+            <form id="formProducto">
+                <input type="hidden" id="productoId">
+
+                <div class="campo">
+                    <label for="inputNombre">Nombre del producto</label>
+                    <input type="text" id="inputNombre" placeholder="Ej: Cera para cabello" required>
+                </div>
+
+                <div class="campo">
+                    <label for="inputStock">Stock inicial</label>
+                    <input type="number" id="inputStock" min="0" placeholder="Ej: 15" required>
+                </div>
+
+                <div class="campo">
+                    <label for="inputPrecio">Precio (COP)</label>
+                    <input type="number" id="inputPrecio" min="0" step="500" placeholder="Ej: 22000" required>
+                </div>
+
+                <p class="mensaje-error" id="mensajeErrorForm"></p>
+
+                <div class="acciones-modal">
+                    <button type="button" class="btn btn-secundario" id="btnCancelar">Cancelar</button>
+                    <button type="submit" class="btn btn-dorado">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para ajustar el stock (RF19) -->
+    <div class="overlay-modal" id="overlayStock">
+        <div class="modal">
+            <h2>Actualizar Stock</h2>
+            <p class="descripcion-topbar" id="nombreProductoStock" style="margin-bottom:1rem;"></p>
+
+            <form id="formStock">
+                <input type="hidden" id="productoStockId">
+
+                <div class="campo">
+                    <label for="inputCantidadStock">Cantidad (usa negativo para restar)</label>
+                    <input type="number" id="inputCantidadStock" placeholder="Ej: 5 o -3" required>
+                </div>
+
+                <p class="mensaje-error" id="mensajeErrorStock"></p>
+
+                <div class="acciones-modal">
+                    <button type="button" class="btn btn-secundario" id="btnCancelarStock">Cancelar</button>
+                    <button type="submit" class="btn btn-dorado">Actualizar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="notificacion" id="notificacion"></div>
+
+    <script src="js/auth.js"></script>
+    <script>const PAGINA_ACTIVA = 'inventario';</script>
+    <script src="js/sidebar.js"></script>
+    <script src="js/inventario.js"></script>
+</body>
+</html>

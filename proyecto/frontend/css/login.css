@@ -1,0 +1,65 @@
+/* ==========================================================
+   login.css
+   Estilos especificos de la pantalla de inicio de sesion,
+   replicando el wireframe "Login" del proyecto BARBIERE 11.
+   ========================================================== */
+
+.pagina-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: radial-gradient(circle at top, #1a1a1a 0%, #0d0d0d 70%);
+}
+
+.tarjeta-login {
+    width: 100%;
+    max-width: 380px;
+    background-color: var(--color-card);
+    border: 1px solid var(--color-borde);
+    border-radius: 12px;
+    padding: 2.5rem 2rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.logo-login {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.logo-login h1 {
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+.acento-dorado {
+    color: var(--color-dorado);
+}
+
+.subtitulo {
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    color: var(--color-texto-secundario);
+    margin-top: 0.3rem;
+}
+
+.nombre-marca {
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    margin-top: 0.2rem;
+}
+
+.btn-ancho {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+}
+
+.pie-login {
+    text-align: center;
+    font-size: 0.7rem;
+    color: var(--color-texto-secundario);
+    margin-top: 1.8rem;
+}

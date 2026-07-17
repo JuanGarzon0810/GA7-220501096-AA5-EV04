@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BARBIERE 11 - Reportes & Análisis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="layout">
+        <aside id="sidebar"></aside>
+
+        <main class="contenido-principal">
+            <header id="topbar"></header>
+
+            <div class="pagina-contenido">
+                <div class="encabezado">
+                    <div>
+                        <h2>Reportes & Análisis</h2>
+                        <p class="descripcion-topbar">Estadísticas y métricas del negocio</p>
+                    </div>
+                </div>
+
+                <div class="grid-paneles">
+                    <div class="panel">
+                        <h3>Ingresos por Mes (RF22)</h3>
+                        <div id="graficaIngresosPorMes">
+                            <p class="sin-datos">Cargando...</p>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <h3>Citas por Estado</h3>
+                        <div id="graficaCitasPorEstado">
+                            <p class="sin-datos">Cargando...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <h3>Servicios Más Vendidos (RF23)</h3>
+                    <div id="tablaServiciosVendidos">
+                        <p class="sin-datos">Cargando...</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script>const PAGINA_ACTIVA = 'reportes';</script>
+    <script src="js/sidebar.js"></script>
+    <script src="js/reportes.js"></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BARBIERE 11 - Gestión de Barberos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="layout">
+        <aside id="sidebar"></aside>
+
+        <main class="contenido-principal">
+            <header id="topbar"></header>
+
+            <div class="pagina-contenido">
+                <div class="encabezado">
+                    <div>
+                        <h2>Gestión de Barberos</h2>
+                        <p class="descripcion-topbar">Administra el personal de la barbería</p>
+                    </div>
+                    <button class="btn btn-dorado" id="btnNuevoBarbero">+ Nuevo Barbero</button>
+                </div>
+
+                <table class="tabla-clientes">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nombre</th>
+                            <th>Especialidad</th>
+                            <th>Teléfono</th>
+                            <th>Citas asignadas</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cuerpoTablaBarberos">
+                        <tr><td colspan="6" class="sin-datos">Cargando barberos...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal para crear / editar barbero (RF16) -->
+    <div class="overlay-modal" id="overlayModal">
+        <div class="modal">
+            <h2 id="tituloModal">Nuevo Barbero</h2>
+
+            <form id="formBarbero">
+                <input type="hidden" id="barberoId">
+
+                <div class="campo">
+                    <label for="inputNombre">Nombre completo</label>
+                    <input type="text" id="inputNombre" placeholder="Ej: Miguel Ospina" required>
+                </div>
+
+                <div class="campo">
+                    <label for="inputEspecialidad">Especialidad</label>
+                    <input type="text" id="inputEspecialidad" placeholder="Ej: Cortes clásicos">
+                </div>
+
+                <div class="campo">
+                    <label for="inputTelefono">Teléfono</label>
+                    <input type="text" id="inputTelefono" placeholder="Ej: 3001234567">
+                </div>
+
+                <p class="mensaje-error" id="mensajeErrorForm"></p>
+
+                <div class="acciones-modal">
+                    <button type="button" class="btn btn-secundario" id="btnCancelar">Cancelar</button>
+                    <button type="submit" class="btn btn-dorado">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para ver las citas asignadas a un barbero (RF17) -->
+    <div class="overlay-modal" id="overlayCitasBarbero">
+        <div class="modal">
+            <h2>Citas asignadas</h2>
+            <div id="listaCitasBarbero">
+                <p class="sin-datos">Cargando citas...</p>
+            </div>
+            <div class="acciones-modal">
+                <button type="button" class="btn btn-secundario" id="btnCerrarCitasBarbero">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="notificacion" id="notificacion"></div>
+
+    <script src="js/auth.js"></script>
+    <script>const PAGINA_ACTIVA = 'barberos';</script>
+    <script src="js/sidebar.js"></script>
+    <script src="js/barberos.js"></script>
+</body>
+</html>
